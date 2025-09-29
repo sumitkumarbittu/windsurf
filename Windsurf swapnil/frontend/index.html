@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DreamCraft3D Mock – 3D Generation Demo</title>
+  <link rel="stylesheet" href="/frontend/style.css" />
+</head>
+<body>
+  <header>
+    <h1>DreamCraft3D – Demo (Mock)</h1>
+    <p>Enter a prompt and optionally upload a reference image. The backend returns a mock OBJ (a cube).</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <form id="gen-form" method="post" action="/generate-3d" enctype="multipart/form-data">
+        <label>
+          Prompt
+          <input type="text" id="prompt" name="prompt" placeholder="a futuristic red car" required autofocus />
+        </label>
+        <label>
+          Reference image (optional)
+          <input type="file" id="image" name="image" accept="image/*" />
+        </label>
+        <button type="submit">Generate 3D</button>
+      </form>
+      <div id="status"></div>
+      <div id="result" class="hidden">
+        <p><strong>Mesh file:</strong> <a id="mesh-link" href="#" target="_blank" rel="noopener">open</a></p>
+      </div>
+    </section>
+
+    <section class="viewer">
+      <div id="viewer"></div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Mock demo. Replace backend with real DreamCraft3D pipeline when ready.</small>
+  </footer>
+
+  <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.158.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://unpkg.com/three@0.158.0/examples/js/loaders/OBJLoader.js"></script>
+  <script src="/frontend/app.js" type="module"></script>
+</body>
+</html>
